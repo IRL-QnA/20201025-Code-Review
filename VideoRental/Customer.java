@@ -4,9 +4,9 @@ import java.util.List;
 
 public class Customer {
 	private String name;
-
+	
 	private List<Rental> rentals = new ArrayList<Rental>();
-
+	
 	public Customer(String name) {
 		this.setName(name);
 	}
@@ -44,7 +44,7 @@ public class Customer {
 			double eachCharge = 0;
 			int eachPoint = 0 ;
 			int daysRented = 0;
-
+			// 50, 53번 줄의 불필요한 코드 반복
 			if (each.getStatus() == 1) { // returned Video
 				long diff = each.getReturnDate().getTime() - each.getRentDate().getTime();
 				daysRented = (int) (diff / (1000 * 60 * 60 * 24)) + 1;
@@ -77,7 +77,7 @@ public class Customer {
 
 			totalCharge += eachCharge;
 			
-			totalPoint += eachPoint ;
+			totalPoint += eachPoint; // 불필요한 띄어쓰기
 		}
 
 		result += "Total charge: " + totalCharge + "\tTotal Point:" + totalPoint + "\n";
@@ -86,7 +86,7 @@ public class Customer {
 		if ( totalPoint >= 10 ) {
 			System.out.println("Congrat! You earned one free coupon");
 		}
-		if ( totalPoint >= 30 ) {
+		else if ( totalPoint >= 30 ) { // else if가 아니라면 30이 넘을경우 두 문장 다 출력됨
 			System.out.println("Congrat! You earned two free coupon");
 		}
 		return result ;
